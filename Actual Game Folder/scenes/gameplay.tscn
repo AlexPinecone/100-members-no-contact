@@ -1,18 +1,51 @@
 [gd_scene format=3 uid="uid://cfdefk30w2x3n"]
 
 [ext_resource type="PackedScene" uid="uid://e1d03bbv2uh" path="res://Actual Game Folder/scenes/components/player.tscn" id="1_ix2qu"]
+[ext_resource type="PackedScene" uid="uid://cce2fbfh6tc64" path="res://Actual Game Folder/scenes/items.tscn" id="2_ijmr5"]
 [ext_resource type="PackedScene" uid="uid://c5srio2figxlm" path="res://Actual Game Folder/scenes/levels/level1.tscn" id="2_p5wng"]
 [ext_resource type="Script" uid="uid://pbx5c2p7gv2v" path="res://Actual Game Folder/scripts/follow_cam.gd" id="3_lksfj"]
+[ext_resource type="Texture2D" uid="uid://cme662o0ufeay" path="res://icon.svg" id="4_b23x5"]
 
 [node name="Gameplay" type="Node2D" unique_id=72458947]
 
-[node name="Player" parent="." unique_id=1516017166 instance=ExtResource("1_ix2qu")]
+[node name="Player" parent="." unique_id=1516017166 groups=["player"] instance=ExtResource("1_ix2qu")]
+
+[node name="items" type="Node2D" parent="." unique_id=959955208]
 
 [node name="Levels" type="Node" parent="." unique_id=1993832825]
 
-[node name="Level1" parent="Levels" unique_id=1666082091 instance=ExtResource("2_p5wng")]
+[node name="Level1" parent="Levels" unique_id=1666082091 groups=["player"] instance=ExtResource("2_p5wng")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1524686198 node_paths=PackedStringArray("target")]
 script = ExtResource("3_lksfj")
 target = NodePath("../Player")
 follow_magnitude = 4.0
+
+[node name="item" parent="." unique_id=730989761 instance=ExtResource("2_ijmr5")]
+position = Vector2(110, -186)
+item_texture = ExtResource("4_b23x5")
+
+[node name="UI" type="Node" parent="." unique_id=1024467919]
+
+[node name="item interaction ui" type="CanvasLayer" parent="UI" unique_id=1679047641]
+
+[node name="ColorRect" type="ColorRect" parent="UI/item interaction ui" unique_id=2121063119]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -181.0
+offset_top = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.40392157, 0.74509805, 0.8, 0.29411766)
+
+[node name="Label" type="Label" parent="UI/item interaction ui/ColorRect" unique_id=1392911976]
+layout_mode = 0
+offset_right = 181.0
+offset_bottom = 30.0
+text = "press E to aquire item"
+horizontal_alignment = 1
+vertical_alignment = 1

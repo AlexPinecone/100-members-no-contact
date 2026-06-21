@@ -19,6 +19,8 @@ const SPARKS_SCENE = preload("res://Actual Game Folder/scenes/components/sparks.
 
 @onready var spin_bar: ProgressBar = $CanvasLayer/SpinBar
 
+# to control item interaction ui visibility
+@onready var interact_UI = $"../UI/item interaction ui/ColorRect"
 
 var current_velocity: Vector2 = Vector2(0, 0)
 var spin_velocity: float = starting_spin_velocity
@@ -27,6 +29,8 @@ var player_died: bool = false
 func _ready() -> void:
 	# this is necessary for _on_body_entered, 1 is technically enough for just the player but with multiple bayblades we might need to increase this value.
 	max_contacts_reported = 5
+	# needed for inventory system integration, sets the reference for the player using a global function
+	Globals.player_reference(self)
 
 func _physics_process(delta: float) -> void:
 
@@ -62,7 +66,10 @@ func _physics_process(delta: float) -> void:
 # we can add ways to increase your spin later to give the player more control
 func _on_body_entered(_body: Node) -> void:
 	spin_velocity -= spin_velocity_drop_on_collision
-	pass
+	
+	# requires on the player having a collision area 2d to pickup items,
+	#if area.has_method("pickup_item"):
+		#area.pickup_item()
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	var contact_count = get_contact_count()
