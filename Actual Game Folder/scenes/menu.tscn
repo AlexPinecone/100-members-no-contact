@@ -28,15 +28,15 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qqymo"]
 bg_color = Color(0.47058824, 0.7294118, 0.9254902, 0.5686275)
 
-[node name="Menu" type="Control" unique_id=360561653 node_paths=PackedStringArray("start_button", "story_button", "exit_button")]
+[node name="Menu" type="Control" unique_id=360561653 node_paths=PackedStringArray("start_button", "endless_button", "exit_button")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -1.0
 offset_right = 1151.0
 offset_bottom = 648.0
 script = ExtResource("1_n3qwu")
-start_button = NodePath("STORY")
-story_button = NodePath("LET IT RIP")
+start_button = NodePath("LET IT RIP")
+endless_button = NodePath("ENDLESS MODE")
 exit_button = NodePath("EXIT")
 button_hover_stream = ExtResource("2_vnj0c")
 button_click_stream = ExtResource("3_08yys")
@@ -55,7 +55,7 @@ position = Vector2(343, 241)
 scale = Vector2(0.705, 0.705)
 texture = ExtResource("7_wg53l")
 
-[node name="STORY" type="Button" parent="." unique_id=787360440]
+[node name="LET IT RIP" type="Button" parent="." unique_id=787360440]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 462.0
@@ -65,7 +65,7 @@ size_flags_horizontal = 4
 theme_override_styles/normal = SubResource("StyleBoxFlat_wg53l")
 theme_override_styles/hover = SubResource("StyleBoxFlat_s6ehw")
 
-[node name="LET IT RIP" type="Button" parent="." unique_id=1499209421]
+[node name="ENDLESS MODE" type="Button" parent="." unique_id=1499209421]
 layout_mode = 0
 offset_left = 49.0
 offset_top = 520.0
@@ -74,6 +74,7 @@ offset_bottom = 553.0
 size_flags_horizontal = 4
 theme_override_styles/normal = SubResource("StyleBoxFlat_4m5qw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0xjja")
+text = "ENDLESS MODE"
 
 [node name="EXIT" type="Button" parent="." unique_id=1224249848]
 layout_mode = 0
@@ -94,13 +95,14 @@ offset_bottom = 655.0
 mouse_filter = 2
 
 [node name="Story" type="Sprite2D" parent="CenterContainer" unique_id=1432909295]
-position = Vector2(290, 474)
-scale = Vector2(0.3, 0.3)
+visible = false
+position = Vector2(267.719, 523.513)
+scale = Vector2(0.206, 0.206)
 texture = ExtResource("8_4m5qw")
 
 [node name="Rip" type="Sprite2D" parent="CenterContainer" unique_id=2112322566]
-position = Vector2(291, 530)
-scale = Vector2(0.3, 0.3)
+position = Vector2(326.919, 477.144)
+scale = Vector2(0.444, 0.444)
 texture = ExtResource("9_mpbnu")
 
 [node name="Quit" type="Sprite2D" parent="CenterContainer" unique_id=546445882]

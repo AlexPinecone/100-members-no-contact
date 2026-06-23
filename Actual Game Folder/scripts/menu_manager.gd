@@ -1,7 +1,7 @@
 extends Control
 
 @export var start_button : Button
-@export var story_button : Button
+@export var endless_button : Button
 @export var exit_button : Button
 @export var button_hover_stream : AudioStream
 @export var button_click_stream : AudioStream
@@ -11,8 +11,8 @@ extends Control
 func _ready() -> void:
 	start_button.pressed.connect(start)
 	start_button.mouse_entered.connect(hover)
-	story_button.pressed.connect(story)
-	story_button.mouse_entered.connect(hover)
+	endless_button.pressed.connect(endless)
+	endless_button.mouse_entered.connect(hover)
 	exit_button.pressed.connect(exit)
 	exit_button.mouse_entered.connect(hover)
 	AudioManager.play_music_stream(music_stream)
@@ -25,10 +25,10 @@ func start():
 	AudioManager.fade_out_music()
 	SceneManager.change_screen(SceneManager.SceneKey.EXPLORATION)
 
-func story():
+func endless():
 	AudioManager.play_sfx(button_click_stream,Vector2.ZERO)
 	AudioManager.fade_out_music()
-	SceneManager.change_screen(SceneManager.SceneKey.EXPLORATION)
+	SceneManager.change_screen(SceneManager.SceneKey.GAMEPLAY) # NO ENDLESS MODE EXISTS YET
 
 func exit():
 	var sPlayer = AudioManager.get_sfx_player(button_click_stream,Vector2.ZERO)
